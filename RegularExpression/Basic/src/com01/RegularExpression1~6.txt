@@ -1,0 +1,51 @@
+http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents
+
+Page1~6
+
+// 기본적으로 정규 표현식은 대소문자, 공백을 구분한다.
+// ^ 는 앞에서부터 검색, $는 뒤에서부터 검색
+		
+제시어 : who is who
+		 
+1. 정규표현식 : ^who 
+Frist match : (who) is who 
+All matches : (who) is who
+ 
+2. 정규표현식 : who$ 
+Frist match : who is (who) 
+All matches : who is (who)
+ 
+
+제시어 : $12$ \-\ $25$
+ 
+1. 정규표현식 : \$ 
+First match: ($)12$ \-\ $25$ 
+All matches: ($)12($) \-\ ($)25($)
+ 
+2. 정규표현식 : ^\$ 
+First match: ($)12$ \-\ $25$ 
+All matches: ($)12$ \-\ $25$
+ 
+3. 정규표현식 : \$$ 
+First match: $12$ \-\ $25($) 
+All matches: $12$ \-\ $25($)
+ 
+ 
+// . 은 모든 문자를 매칭시킨다. 점의 갯수에 따라 단어를 묶는다.
+
+제시어 : Regular Expressions are powerful!!!
+ 
+1. 정규표현식 : . 
+First match : R 
+All matches : Regular Expressions are powerful!!!
+ 
+2. 정규표현식 : ...... 
+First match : Regula 
+All matches : (Regula)(r Expr)(ession)(s are )(powerf)ul!!!
+
+제시어 : O.K.
+
+1. 정규표현식 : \..\.
+First match : O(.K.)
+All matches : O(.K.)
+		

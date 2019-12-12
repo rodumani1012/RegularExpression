@@ -1,0 +1,53 @@
+http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents
+
+Page7~9
+
+// 원하는 문자 후보군 정하기.
+// [] : 대괄호(square brackets)
+
+제시어 : How do you do?
+		 
+1. 정규표현식 : [oyu]	=> o, y, u를 찾아줌
+Frist match : H(o)w do you do? 
+All matches : H(o)w d(o) (you) d(o)?
+
+2. 정규표현식 : [dH].	=> d?, H?   2문자를 찾아줌
+Frist match : (Ho)w do you do?
+All matches : (Ho)w (do) you (do)?
+
+3. 정규표현식 : [owy][yow]	=> oy, oo, ow, wy, wo, ww, yy, yo, yw 를 찾음(행렬 생각하면 됨)
+Frist match : H(ow) do you do?
+All matches : H(ow) do (yo)u do?
+
+
+// 범위기호 '-'
+제시어 : ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+
+1. 정규표현식 : [C-K]	=> [CDEFGHIJK]랑 같은 말
+First match : AB(C)DEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+All matches : AB(CDEFGHIJK)LMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+
+2. 정규표현식 : [a-d]	=> [abcd]랑 같은 말
+First match : ABCDEFGHIJKLMNOPQRSTUVWXYZ (a)bcdefghijklmnopqrstuvwxyz 0123456789
+All matches : ABCDEFGHIJKLMNOPQRSTUVWXYZ (abcd)efghijklmnopqrstuvwxyz 0123456789
+
+3. 정규표현식 : [2-6]	=> [23456]랑 같은 말
+First match : ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 01(2)3456789
+All matches : ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 01(23456)789
+
+4. 정규표현식 : [C-Ka-d2-6]	=> C~K까지, a~d까지, 2~6까지
+First match : AB(C)DEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+All matches : AB(CDEFGHIJK)LMNOPQRSTUVWXYZ (abcd)efghijklmnopqrstuvwxyz 01(23456)789
+
+
+
+// ^ 이 [] 안에 들어가면 not을 의미함. [^] => !=
+제시어 : ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+
+1. 정규표현식 : [^CDghi45]	=> [CDghi45] 를 제외한 문자 탐색
+First match : (A)BCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+All matches : (AB)CD(EFGHIJKLMNOPQRSTUVWXYZ) (abcdef)ghi(jklmnopqrstuvwxyz 0123456789)
+
+2. 정규표현식 : [^W-Z]	=> [W-Z] 를 제외한 문자 탐색
+First match : (A)BCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+All matches : (ABCDEFGHIJKLMNOPQRSTUV)WXYZ (abcdefghijklmnopqrstuvwxyz 0123456789)
