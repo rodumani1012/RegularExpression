@@ -1,0 +1,21 @@
+http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents
+https://soooprmx.com/archives/7718
+
+Page10
+
+// 서브패턴 : () 덩어리로 보는 역할
+// 파이프 : |  or를 의미함
+
+제시어 : Monday Tuesday Friday
+
+1. 정규표현식 : (on|ues|rida)   => 문자열 중에 'on'이나 'ues'나 'rida'를 찾아줌
+Frist match : M(on)day Tuesday Friday
+All matches : M(on)day T(ues)day F(rida)y
+
+2. 정규표현식 : (Mon|Tues|Fri)day   => 문자열 중에 'Mon'+'day', 'Tues'+'day', 'Fri'+'day' 를 찾아줌
+Frist match : (Monday) Tuesday Friday
+All matches : (Monday) (Tuesday) (Friday)
+
+3. 정규표현식 : ..(id|esd|nd)ay   => 문자열 중에 ..+'id'+'ay', ..+'esd'+'ay', ..+'nd'+'ay' 를 찾아줌
+Frist match : (Monday) Tuesday Friday
+All matches : (Monday) (Tuesday) (Friday)

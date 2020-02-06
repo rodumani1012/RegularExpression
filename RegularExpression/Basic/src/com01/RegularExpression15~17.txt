@@ -1,0 +1,85 @@
+http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents
+https://soooprmx.com/archives/7718
+
+Page15~17
+
+// (반복)수량자 : {m,n}    => 중괄호 안에 원하는 숫자를 넣어 수량을 제한할 수 있음
+// {n} : n개인
+// {m, n} : m개 이상 n개 이하인
+// {n,} : n개 이상
+// 수량자 뒤에 ? 가 오면 해당 수량자의 최소값으로 바뀜.
+// *? : 0
+// +? : 1
+// ?? : 0
+
+제시어 : One ring to bring them all and in the darkness bind them
+
+1. 정규표현식 : .{5}    => 어떠한 문자든 5글자인 텍스트.
+Frist match : (One r)ing to bring them all and in the darkness bind them
+All matches : (One ring to bring them all and in the darkness bind the)m
+
+2. 정규표현식 : [els]{1,3}    => e,l,s 문자가 1~3개인 텍스트.
+Frist match : On(e) ring to bring them all and in the darkness bind them
+All matches : On(e) ring to bring th(e)m a(ll) and in th(e) darkn(ess) bind th(e)m
+
+3. 정규표현식 : [a-z]{3,}    => a~z 문자가 3개 이상인 텍스트.
+Frist match : One (ring) to bring them all and in the darkness bind them
+All matches : One (ring) to (bring) (them) (all) (and) in (the) (darkness) (bind) (them)
+
+
+제시어 : AA ABA ABBA ABBBA
+
+1. 정규표현식 : AB*A    => A 사이에 B가 0개 이상
+Frist match : (AA) ABA ABBA ABBBA
+All matches : (AA) (ABA) (ABBA) (ABBBA)
+
+2. 정규표현식 : AB{0,}A    => A 사이에 B가 0개 이상
+Frist match : (AA) ABA ABBA ABBBA
+All matches : (AA) (ABA) (ABBA) (ABBBA)
+
+3. 정규표현식 : AB+A    => A 사이에 B가 1개 이상
+Frist match : AA (ABA) ABBA ABBBA
+All matches : AA (ABA) (ABBA) (ABBBA)
+
+4. 정규표현식 : AB{1,}A    => A 사이에 B가 1개 이상
+Frist match : AA (ABA) ABBA ABBBA
+All matches : AA (ABA) (ABBA) (ABBBA)
+
+5. 정규표현식 : AB?A    => A 사이에 B가 1개 이하
+Frist match : (AA) ABA ABBA ABBBA
+All matches : (AA) (ABA) ABBA ABBBA
+
+6. 정규표현식 : AB{0,1}A    => A 사이에 B가 1개 이하
+Frist match : (AA) ABA ABBA ABBBA
+All matches : (AA) (ABA) ABBA ABBBA
+
+
+// 수량자 뒤에 ? 가 오면 해당 수량자의 최소값으로 바뀜.
+// *? : 0
+// +? : 1
+// ?? : 0
+제시어 : One ring to bring them all and in the darkness bind them
+
+1. 정규표현식 : r.*    => r 뒤에 어떤 문자가 0개 이상
+Frist match : One (ring to bring them all and in the darkness bind them)
+All matches : One (ring to bring them all and in the darkness bind them)
+
+2. 정규표현식 : r.*?    => r 뒤에 어떤 문자가 0개
+Frist match : One (r)ing to bring them all and in the darkness bind them
+All matches : One (r)ing to b(r)ing them all and in the da(r)kness bind them
+
+3. 정규표현식 : r.+    => r 뒤에 어떤 문자가 1개 이상
+Frist match : One (ring to bring them all and in the darkness bind them)
+All matches : One (ring to bring them all and in the darkness bind them)
+
+4. 정규표현식 : r.+?    => r 뒤에 어떤 문자가 1개
+Frist match : One (ri)ng to bring them all and in the darkness bind them
+All matches : One (ri)ng to b(ri)ng them all and in the da(rk)ness bind them
+
+5. 정규표현식 : r.?    => r 뒤에 어떤 문자가 1개 이하
+Frist match : One (ri)ng to bring them all and in the darkness bind them
+All matches : One (ri)ng to b(ri)ng them all and in the da(rk)ness bind them
+
+6. 정규표현식 : r.??    => r 뒤에 어떤 문자가 0개
+Frist match : One (r)ing to bring them all and in the darkness bind them
+All matches : One (r)ing to b(r)ing them all and in the da(r)kness bind them

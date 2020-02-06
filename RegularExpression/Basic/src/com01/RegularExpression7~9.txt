@@ -1,4 +1,5 @@
 http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents
+https://soooprmx.com/archives/7718
 
 Page7~9
 
@@ -46,7 +47,7 @@ All matches : AB(CDEFGHIJK)LMNOPQRSTUVWXYZ (abcd)efghijklmnopqrstuvwxyz 01(23456
 
 1. 정규표현식 : [^CDghi45]	=> [CDghi45] 를 제외한 문자 탐색
 First match : (A)BCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
-All matches : (AB)CD(EFGHIJKLMNOPQRSTUVWXYZ) (abcdef)ghi(jklmnopqrstuvwxyz 0123456789)
+All matches : (AB)CD(EFGHIJKLMNOPQRSTUVWXYZ) (abcdef)ghi(jklmnopqrstuvwxyz 0123)45(6789)
 
 2. 정규표현식 : [^W-Z]	=> [W-Z] 를 제외한 문자 탐색
 First match : (A)BCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789

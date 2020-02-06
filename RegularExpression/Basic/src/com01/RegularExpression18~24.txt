@@ -1,0 +1,149 @@
+http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents
+https://soooprmx.com/archives/7718
+
+Page18~24
+
+// Character Class : \w, \W, \s, \S
+// \w : 알파벳, 숫자, 언더라인인 것.(word)
+// \W : 알파벳, 숫자, 언더라인이 아닌 것
+// \s : 공백문자, 탭인 것(space)
+// \S : 공백이 아닌 것
+// \d : 숫자인 것(digit)
+// \D : 숫자가 아닌 것
+// \b : 단어(\w)의 경계를 가리킴.(boundary)
+// \B : \b의 반대
+// \A : ^과 비슷함.
+// \Z : $과 비슷함.
+
+
+// \w : 알파벳, 숫자, 언더라인인 것.
+제시어 : A1 B2 c3 d_4 e:5 ffGG77--__--
+
+1. 정규표현식 : \w    => 알파벳, 숫자, 언더라인인 텍스트
+Frist match : (A)1 B2 c3 d_4 e:5 ffGG77--__--
+All matches : (A1) (B2) (c3) (d_4) (e):(5) (ffGG77)--(__)--
+
+2. 정규표현식 : \w*    => 알파벳, 숫자, 언더라인인 텍스트가 0개 이상인 텍스트
+Frist match : (A1) B2 c3 d_4 e:5 ffGG77--__--
+All matches : (A1) (B2) (c3) (d_4) (e):(5) (ffGG77)--(__)--
+
+3. 정규표현식 : [a-z]\w*    => a~z + 알파벳, 숫자, 언더라인 0개 이상인 텍스트
+Frist match : A1 B2 (c3) d_4 e:5 ffGG77--__--
+All matches : A1 B2 (c3) (d_4) (e):5 (ffGG77)--__--
+
+4. 정규표현식 : \w{5}    => 알파벳, 숫자, 언더라인인 텍스트 5글자
+Frist match : A1 B2 c3 d_4 e:5 (ffGG7)7--__--
+All matches : A1 B2 c3 d_4 e:5 (ffGG7)7--__--
+
+5. 정규표현식 : [A-z0-9_]    => \w 와 같은 의미.
+Frist match : (A)1 B2 c3 d_4 e:5 ffGG77--__--
+All matches : (A1) (B2) (c3) (d_4) (e):(5) (ffGG77)--(__)--
+
+// \W : 알파벳, 숫자, 언더라인이 아닌 것
+제시어 : AS _34:AS11.23 @#$ %12^*
+
+1. 정규표현식 : \W    => 알파벳, 숫자, 언더라인이 아닌 것
+Frist match : AS( )_34:AS11.23 @#$ %12^*
+All matches : AS( )_34(:)AS11(.)23( @#$ %)12(^*)
+
+2. 정규표현식 : \w    => 알파벳, 숫자, 언더라인인 텍스트
+Frist match : (A)S _34:AS11.23 @#$ %12^*
+All matches : (AS) (_34):(AS11).(23) @#$ %(12)^*
+
+3. 정규표현식 : [^A-z0-9_]    => \W 와 같은 의미.
+Frist match : AS( )_34:AS11.23 @#$ %12^*
+All matches : AS( )_34(:)AS11(.)23( @#$ %)12^(*)
+
+
+// \s : 공백문자, 탭인 것
+// \S : 공백이 아닌 것
+제시어 : Ere iron was found or tree was hewn, When young was mountain under moon; Ere ring was made, or wrought was woe, It walked the forests long ago.
+
+1. 정규표현식 : \s    => 공백문자, 탭인 것
+Frist match : Ere( )iron was found or tree was hewn, When young was mountain under moon; Ere ring was made, or wrought was woe, It walked the forests long ago.
+All matches : Ere( )iron( )was( )found( )or( )tree( )was( )hewn,( )When( )young( )was( )mountain( )under( )moon;( )Ere( )ring( )was( )made,( )or( )wrought( )was( )woe,( )It( )walked( )the( )forests( )long( )ago.
+
+2. 정규표현식 : \S    => 공백이 아닌 것
+Frist match : (E)re iron was found or tree was hewn, When young was mountain under moon; Ere ring was made, or wrought was woe, It walked the forests long ago.
+All matches : (Ere) (iron) (was) (found) (or) (tree) (was) (hewn,) (When) (young) (was) (mountain) (under) (moon;) (Ere) (ring) (was) (made,) (or) (wrought) (was) (woe,) (It) (walked) (the) (forests) (long) (ago.)
+
+
+// \d : 숫자인 것
+// \D : 숫자가 아닌 것
+제시어 : Page 123; published: 1234 id=12#24@112
+
+1. 정규표현식 : \d    => 숫자인 것
+Frist match : Page (1)23; published: 1234 id=12#24@112
+All matches : Page (123); published: (1234) id=(12)#(24)@(112)
+
+2. 정규표현식 : \D    => 숫자가 아닌 것
+Frist match : (P)age 123; published: 1234 id=12#24@112
+All matches : (Page )123(; published: )1234( id=)12(#)24(@)112
+
+3. 정규표현식 : [0-9]    => \d 와 같은 의미.
+Frist match : Page (1)23; published: 1234 id=12#24@112
+All matches : Page (123); published: (1234) id=(12)#(24)@(112)
+
+
+// \b : 단어(\w)의 경계를 가리킴.
+// \B : \b의 반대
+제시어 : Ere iron was found or tree was hewn, When young was mountain under moon; Ere ring was made, or wrought was woe, It walked the forests long ago.
+
+1. 정규표현식 : \b.    => 어떤 단어의 시작되는 지점(\w)
+Frist match : (E)re iron was found or tree was hewn, When young was mountain under moon; Ere ring was made, or wrought was woe, It walked the forests long ago.
+All matches : (E)re( i)ron( w)as( f)ound( o)r( t)ree( w)as( h)ewn(,) (W)hen( y)oung( w)as( m)ountain( u)nder( m)oon(;) (E)re( r)ing( w)as( m)ade(,) (o)r( w)rought( w)as( w)oe(,) (I)t( w)alked( t)he( f)orests( l)ong( a)go(.)
+
+2. 정규표현식 : .\b    => 어떤 단어의 끝나는 지점(\w)
+Frist match : Er(e) iron was found or tree was hewn, When young was mountain under moon; Ere ring was made, or wrought was woe, It walked the forests long ago.
+All matches : Er(e )iro(n )wa(s )foun(d )o(r )tre(e )wa(s )hew(n),( )Whe(n )youn(g )wa(s )mountai(n )unde(r )moo(n);( )Er(e )rin(g )wa(s )mad(e),( )o(r )wrough(t )wa(s )wo(e),( )I(t )walke(d )th(e )forest(s )lon(g )ag(o).
+
+단어 경계는 \b로 표시하며, 단어의 시작이나 마지막을 일치시킬 때 사용한다.
+주로, \b를 단어 시작과 마지막에 붙여 정규 표현식에서 찾고자 하는 단어와 완전히 일치시킬 목적으로 사용한다.
+
+제시어 : The cat scattered his food all over the room.
+
+1. 정규표현식 : \bcat\b    => 앞이든 뒤든 cat이라는 텍스트를 찾아라.
+First match : The (cat) scattered his food all over the room.
+All matches : The (cat) scattered his food all over the room.
+
+제시어 : The captain wore this cap and cape proudly as he sat listening to the recap of how his crew saved the man from capsized vessel.
+
+1. 정규표현식 : \bcap    => 앞에서부터 cap이라는 텍스트를 찾아라.
+First match : The (cap)tain wore this cap and cape proudly as he sat listening to the recap of how his crew saved the man from capsized vessel.
+All matches : The (cap)tain wore this (cap) and (cap)e proudly as he sat listening to the recap of how his crew saved the man from (cap)sized vessel.
+
+2. 정규표현식 : \Bcap    => cap으로 시작하지 않는 텍스트를 찾아라.
+Frist match : The captain wore this cap and cape proudly as he sat listening to the re(cap) of how his crew saved the man from capsized vessel.
+All matches : The captain wore this cap and cape proudly as he sat listening to the re(cap) of how his crew saved the man from capsized vessel.
+
+
+
+// \A : ^와 비슷하지만 첫째 줄만 검색함.(줄바꿈이 된 것은 찾지않음.)
+// \Z : $과 비슷하지만 마지막 줄만 검색함.(줄바꿈이 된 것은 찾지않음.)
+
+제시어 : 
+Ere iron was found or tree was hewn, 
+When young was mountain under moon; 
+Ere ring was made, or wrought was woe, It walked the forests long ago.
+
+1. 정규표현식 : \A...    => 첫째줄에서 3글자로 된 텍스트를 찾아라.
+First match : 
+(Ere) iron was found or tree was hewn, 
+When young was mountain under moon; 
+Ere ring was made, or wrought was woe, It walked the forests long ago.
+
+All matches : 
+(Ere) iron was found or tree was hewn, 
+When young was mountain under moon; 
+Ere ring was made, or wrought was woe, It walked the forests long ago.
+
+2. 정규표현식 : ...\Z    => 마지막 줄에서 3글자로 된 텍스트를 찾아라.
+First match : 
+Ere iron was found or tree was hewn, 
+When young was mountain under moon; 
+Ere ring was made, or wrought was woe, It walked the forests long a(go.)
+
+All matches : 
+Ere iron was found or tree was hewn, 
+When young was mountain under moon; 
+Ere ring was made, or wrought was woe, It walked the forests long a(go.)

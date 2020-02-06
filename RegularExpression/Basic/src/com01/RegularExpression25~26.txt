@@ -1,0 +1,21 @@
+http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents
+https://soooprmx.com/archives/7718
+
+Page25~26
+
+// (?=pattern) : 검색하는데 사용하지만 선택할때는 pattern을 제외한다.
+
+
+제시어 : AAAX---aaax---111
+
+1. 정규표현식 : \w+(?=X)    => \w면서 1개 이상인 문자를 검색하는데 X를 사용하지만 결과에는 X를 제외시켜라.
+Frist match : (AAA)X---aaax---111
+All matches : (AAA)X---aaax---111  (aaax는 x가 소문자이므로 선택되지 않음.)
+
+2. 정규표현식 : \w+    => \w가 1개 이상인 문자를 찾아라.
+Frist match : (AAAX)---aaax---111
+All matches : (AAAX)---(aaax)---(111)
+
+3. 정규표현식 : \w+(?=\w)    => \w가 1개 이상인 문자를 검색하는데 \w를 사용하지만 \w를 제외시켜라.
+Frist match : (AAA)X---aaax---111
+All matches : (AAA)X---(aaa)x---(11)1
