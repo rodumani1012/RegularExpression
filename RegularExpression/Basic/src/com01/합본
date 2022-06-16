@@ -469,3 +469,31 @@ All matches : (AAAX)---(aaax)---(111)
 3. 정규표현식 : \w+(?=\w)    => \w가 1개 이상인 문자를 검색하는데 \w를 사용하지만 \w를 제외시켜라.
 Frist match : (AAA)X---aaax---111
 All matches : (AAA)X---(aaa)x---(11)1
+
+/*******************************************************************************************************************************************************/
+
+* 추가사항
+g : 발생할 모든 패턴에 대한 전역 검색(global)
+i : 대/소문자 구분없이 검색(ignore)
+
+제시어 : 123aaa
+
+※ javascript 기준
+1. 정규표현식 :  var reg = /^[0-9]/;
+		var text = '123aaa';
+		text = text.replace(reg, 'ㅋ');
+		console.log(text);
+		==> ㅋ23aaa
+
+2. 정규표현식 :  var reg = /^[0-9]/g;
+		var text = '123aaa';
+		text = text.replace(reg, 'ㅋ');
+		console.log(text);
+		==> ㅋㅋㅋaaa
+		
+2. 정규표현식 :  var reg = /^\w/gi;
+		var text = '123aaa';
+		text = text.replace(reg, 'ㅋ');
+		console.log(text);
+		==> 123ㅋㅋㅋ
+		
